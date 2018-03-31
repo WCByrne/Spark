@@ -1,0 +1,13 @@
+{
+    "host": "http://api.some.com",
+    "auth": {},
+    "cases": [
+        {
+            "name": "some_response",
+            "method": "GET",
+            "route": "/path/to/endpoint",
+            "headers": {},
+            "params": {}
+        }
+    ]
+}
