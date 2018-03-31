@@ -16,27 +16,36 @@ struct Config: Decodable {
     let output : String?
     
     
-    static func load(at url: URL) throws -> Config {
+    static func load(at path: String) throws -> Config {
+        
+        let configURL = URL(fileURLWithPath: path)
+        
+        let data = try { () throws -> Data in
+            do { return try Data(contentsOf: configURL) }
+            catch { throw Err(message: "Unable to load config file from \(path)") }
+        }()
+        
         do {
-            let data = try Data(contentsOf: configURL)
             let decoder = JSONDecoder()
             return try decoder.decode(Config.self, from: data)
         }
         catch let err as DecodingError {
             switch err {
             case let .keyNotFound(key, _):
-                throw Err(message: "Config missing key \(key.stringValue)")
+                throw Err(message: "Config missing key `\(key.stringValue)`")
+                
             case let .valueNotFound(type, context):
-                break;
+                throw Err(message: "Config missing value for key '\(context.codingPath.last!.stringValue)'. Expected \(type)")
+                
             case let .typeMismatch(type, context):
-                throw Err(message: "Config has invalid type for key \(context.codingPath.last!.stringValue), expected \(type)")
+                throw Err(message: "Config has invalid type for key '\(context.codingPath.last!.stringValue)', expected \(type)")
+                
             case .dataCorrupted(_):
-                break
+                throw Err(message: "Config file json is corrupted")
             }
-            throw Err(message: "Invalid config at path \(configURL): \(err)")
         }
-        catch let err {
-            throw Err(message: "Invalid config at path \(configURL): \(err)")
+        catch {
+            throw Err(message: "Invalid config at path")
         }
     }
 }

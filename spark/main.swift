@@ -34,12 +34,10 @@ func arg(_ keys: [String]) -> Any? {
 
 let current = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
 
-let _configPath = arg(["c", "config"], default: "./spark.json")
-let configURL = URL(fileURLWithPath: _configPath)
-
+let configPath = arg(["c", "config"], default: "./spark.json")
 
 do {
-    let config = try Config.load(at: configURL)
+    let config = try Config.load(at: configPath)
     
     // Get the output directory
     guard let output = (arg(["o", "output"]) as? String) ?? config.output,
@@ -57,7 +55,7 @@ do {
     var idx = 0
     func run() {
         guard idx < config.cases.count else {
-            print("Responses saved to \(outputURL.absoluteString) 💥")
+            print("💥 Responses saved to \(configPath)")
             exit(EXIT_SUCCESS)
         }
         let req = config.cases[idx]
