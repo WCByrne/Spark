@@ -1,13 +1,14 @@
 {
-    "host": "http://api.some.com",
-    "auth": {},
+    "service": "https://jsonplaceholder.typicode.com",
+    "headers": {},
     "cases": [
         {
-            "name": "some_response",
+            "name": "posts",
             "method": "GET",
-            "route": "/path/to/endpoint",
-            "headers": {},
-            "params": {}
+            "path": "/posts",
+            "headers": null,
+            "params": null,
+            "body": null
         }
     ]
 }

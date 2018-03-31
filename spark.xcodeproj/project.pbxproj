@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C53667E206F50B0000A8EA5 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C53667D206F50B0000A8EA5 /* Helpers.swift */; };
 		DE1EE99C206F22F800B76FE2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EE99B206F22F800B76FE2 /* main.swift */; };
 		DE1EE9A3206F27FE00B76FE2 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EE9A2206F27FE00B76FE2 /* Config.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C53667D206F50B0000A8EA5 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		DE1EE998206F22F800B76FE2 /* spark */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = spark; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE1EE99B206F22F800B76FE2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		DE1EE9A2206F27FE00B76FE2 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				DE1EE99B206F22F800B76FE2 /* main.swift */,
+				1C53667D206F50B0000A8EA5 /* Helpers.swift */,
 				DE1EE9A2206F27FE00B76FE2 /* Config.swift */,
 			);
 			path = spark;
@@ -123,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE1EE99C206F22F800B76FE2 /* main.swift in Sources */,
+				1C53667E206F50B0000A8EA5 /* Helpers.swift in Sources */,
 				DE1EE9A3206F27FE00B76FE2 /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
