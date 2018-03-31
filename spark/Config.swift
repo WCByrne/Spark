@@ -12,7 +12,7 @@ import Foundation
 struct Config {
     
     let service : URL
-    let cases : []
+    let cases : [String]
     let headers : [String:String]
     
 }
