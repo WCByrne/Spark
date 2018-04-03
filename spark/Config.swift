@@ -9,12 +9,12 @@
 import Foundation
 
 
-struct Config: Decodable {
+struct Config: Codable {
     let service : URL
     let cases : [Case]
     let headers : [String:String]
     let output : String?
-    
+    let oauth: OAuth?
     
     static func load(at path: String) throws -> Config {
         
@@ -51,13 +51,29 @@ struct Config: Decodable {
 }
 
 
-struct Case : Decodable {
+struct OAuth: Codable {
+    let consumer: Credential
+    let token: Credential?
+    let tokens: [String:Credential]?
+    
+    struct Credential : Codable {
+        let key: String
+        let secret: String
+        
+        var tup : (String, String) {
+            return (key, secret)
+        }
+    }
+}
+
+struct Case : Codable {
     let name : String
     let method: String
     let path : String
     let headers : [String:String]?
     let params : [String:String]?
     let body : JSON?
+    let token: String?
 }
 
 public enum JSON {
