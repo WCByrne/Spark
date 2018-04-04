@@ -142,7 +142,7 @@ If your config file contains oauth tokens be careful of publishing them with you
 
 ## Config Example
 
-```
+```json
 {
     "service": "http://api.service.com",
     "headers": {},
@@ -162,17 +162,14 @@ If your config file contains oauth tokens be careful of publishing them with you
             "name": "FetchDrafts",
             "method": "GET",
             "path": "/v1/posts",
-            "headers": null,
             "params": {
             		"status": "draft"
-            },
-            "body": null
+            }
         },
         {
             "name": "CreatePost",
             "method": "POST",
             "path": "/v1/posts",
-            "headers": {},
             "body": {
             		"title": "About Spark",
             		"body": "Well, it's kind of awesome."
