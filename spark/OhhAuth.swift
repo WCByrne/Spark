@@ -85,14 +85,14 @@ open class OhhAuth
         oAuthParameters["oauth_signature"] = binarySignature.base64EncodedString()
         
         /// [RFC-5849 Section 3.5.1](https://tools.ietf.org/html/rfc5849#section-3.5.1)
-        return "OAuth " + oAuthParameters
+        let result = "OAuth " + oAuthParameters
             .map(tuplify)
             .sorted(by: cmp)
             .map(toBrackyPairString)
-            .joined(separator: ",")
+            .joined(separator: ", ")
+        
+        return result
     }
-    
-
     
     /// Function to perform the right percentage encoding for url form parameters.
     ///
@@ -131,7 +131,7 @@ open class OhhAuth
             "oauth_signature_method": "HMAC-SHA1",
             "oauth_version":          "1.0",
             /// [RFC-5849 Section 3.3](https://tools.ietf.org/html/rfc5849#section-3.3)
-            "oauth_timestamp":        String(Int(Date().timeIntervalSince1970)),
+            "oauth_timestamp":         String(Int(Date().timeIntervalSince1970)),
             "oauth_nonce":            UUID().uuidString,
         ]
         if let userKey = userKey {

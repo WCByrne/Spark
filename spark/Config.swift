@@ -22,7 +22,7 @@ struct Config: Codable {
         
         let data = try { () throws -> Data in
             do { return try Data(contentsOf: configURL) }
-            catch { throw Err(message: "Unable to load config file from \(path)") }
+            catch { throw Err(message: "Unable to load config file from \(path)\nTry spark --help") }
         }()
         
         do {
@@ -48,6 +48,47 @@ struct Config: Codable {
             throw Err(message: "Invalid config at path")
         }
     }
+}
+
+extension Config {
+    
+    func request(for requestCase: Case) -> URLRequest {
+        var url = self.service.appendingPathComponent(requestCase.path)
+        if let q = requestCase.params {
+            url = url.addingQuery(q)
+        }
+        
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = requestCase.headers
+        if let oauth = self.oauth {
+            var data: Data?
+            if let body = requestCase.body {
+                data = try? JSONEncoder().encode(body)
+            }
+            var token = oauth.token
+            if let tID = requestCase.token {
+                token = self.oauth?.tokens?[tID]
+                if token == nil {
+                    log.error("No token found for key \(tID), using default.")
+                }
+            }
+            request.oAuthSign(method: requestCase.method,
+                              body: data,
+                              consumerCredentials: oauth.consumer.tup,
+                              userCredentials: token?.tup)
+            
+        }
+        else {
+            if let body = requestCase.body, let data = try? JSONEncoder().encode(body) {
+                request.httpBody = data
+            }
+            request.httpMethod = requestCase.method
+        }
+        
+        return request
+    }
+    
+    
 }
 
 

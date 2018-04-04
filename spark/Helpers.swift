@@ -49,3 +49,71 @@ extension URL {
         return comps?.url ?? self
     }
 }
+
+func createConfig(args: [String:Any]) {
+    var path : URL
+    if let p = args["init"] as? String {
+        path = URL(fileURLWithPath: p)
+    }
+    else {
+        path = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
+    }
+    if path.hasDirectoryPath == true {
+        path = path.appendingPathComponent("spark.json")
+    }
+    if FileManager.default.fileExists(atPath: path.path) && args["f"] as? Bool != true {
+        log.error("Config file already exists at path. Use -f to replace")
+        exit(EXIT_FAILURE)
+    }
+    
+    try? FileManager.default.removeItem(at: path)
+    let auth = OAuth(
+        consumer: OAuth.Credential(key: "consumer-key", secret: "consumer-secret"),
+        token: OAuth.Credential(key: "token-key", secret: "token-secret"),
+        tokens: nil)
+    let cases = [
+        Case(name: "test-case-one", method: "GET", path: "/v1/endpoint", headers: nil, params: nil, body: nil, token: nil)
+    ]
+    let headers = [
+        "x-service-header":"header-value"
+    ]
+    
+    let config = Config(service: URL(string: "http://api.myservice.com")!,
+                        cases: cases,
+                        headers: headers,
+                        output: "./SparkResponses",
+                        oauth: auth)
+    
+    
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = .prettyPrinted
+    let output =  try! encoder.encode(config)
+    
+    let str = String(data: output, encoding: .utf8)!
+        .replacingOccurrences(of: "\\/", with: "/")
+    let data = str.data(using: .utf8)!
+    try! data.write(to: path)
+    
+    log.print("💥 Created spark config file \(path.path). Update then run spark")
+}
+
+func printHelp() {
+    log.print("\n----------------------------------------")
+    log.print("Welcome to Spark\n")
+    log.print("🛠  Create a config template file")
+    log.info("   spark init [path] [-f]")
+    log.print("""
+       path: defaults to ./spark.json
+       -f  : overwrite an existing config with the template
+
+    """)
+    
+    log.print("🏃‍♂️ Run spark using a config file")
+    log.info("   spark [-o --output] [-c --config]")
+    log.print("""
+       -o --output: the directory to save responses to. Can be specified in your config file.
+       -c --config: the path to your config file. defaults to ./spark.json
+
+    """)
+    log.print("----------------------------------------")
+}
