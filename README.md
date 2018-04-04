@@ -19,6 +19,11 @@ Spark is a general purpose http request runner
 * Questions: **[@wcbyrne](https://twitter.com/wcbyrne/)**
 * Bug/request: **[Issues](https://github.com/WCByrne/Spark/issues)**
 
+
+## Installation
+
+...
+
 ## Getting Started
 
 Spark uses a config file to define the requests to make. Getting your config started is as easy as:
@@ -133,6 +138,8 @@ The oauth option defines the credentials for each case cases in the config file.
 > </details>
 
 
+#### SECURITY NOTE 
+If your config file contains oauth tokens be careful of publishing them with your project repo. You may consider checking in a config-base.json file with tokens removed and adding spark.json to your .gitignore. 
 
 ## Config Example
 
