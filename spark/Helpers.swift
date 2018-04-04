@@ -94,7 +94,7 @@ func createConfig(args: [String:Any]) {
     let data = str.data(using: .utf8)!
     try! data.write(to: path)
     
-    log.print("💥 Created spark config file \(path.path). Update then run spark")
+    log.print("⚡️ Created spark config file \(path.path). Update then run spark")
 }
 
 func printHelp() {

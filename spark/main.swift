@@ -82,7 +82,7 @@ do {
     var idx = 0
     func run() {
         guard idx < config.cases.count else {
-            log.print("💥 Responses saved to \(output)")
+            log.print("⚡️ Responses saved to \(output)")
             exit(EXIT_SUCCESS)
         }
         let reqCase = config.cases[idx]
