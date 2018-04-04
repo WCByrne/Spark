@@ -121,11 +121,11 @@ Possible tokens can be defined here and referenced by key in each case (see **[c
 	"token": { },
 	"tokens": {
 		"user-1" : {
-			"key" : "<key-for-user-1>"
+			"key" : "<key-for-user-1>",
 			"secret": "<secret-for-user-1>"
 		},
 		"user-2": {
-			"key": "<key-for-user-2>"
+			"key": "<key-for-user-2>",
 			"secret": "<secret-for-user-2>"
 		}
 	}
