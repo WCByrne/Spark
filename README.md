@@ -118,7 +118,7 @@ The oauth option defines the credentials for each case cases in the config file.
 > <details>
 > <summary>Tokens Options</summary>
 > 
-> ```json
+> ```javascript
 > {
 > 	"consumer": { },
 > 	"token": { },
@@ -142,7 +142,7 @@ If your config file contains oauth tokens be careful of publishing them with you
 
 ## Config Example
 
-```json
+```javascript
 {
     "service": "http://api.service.com",
     "headers": {},
