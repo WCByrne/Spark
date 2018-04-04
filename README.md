@@ -38,7 +38,7 @@ Open up spark.json in a text editor, preferrably one that has json support.
 ## The Config File
 
 The config file defines the requests that should be made when running spark. The top level keys are global to all requests, or "cases". Each case then provides options per request.
-> 
+
 > <a name="service"></a>
 > **service** `String`
 > 
@@ -62,10 +62,9 @@ The config file defines the requests that should be made when running spark. The
 
 
 <a name="cases"></a>
-## Cases
+### Cases
 
 Each case uses the properties defined by the top level properties defined in your config file. Some properties may be futher customized per case.
-
 
 > **name** `String`
 > 
@@ -96,9 +95,8 @@ Each case uses the properties defined by the top level properties defined in you
 > 
 > The name of a oauth token defined in oauth.tokens. See **[OAuth](#oauth)** for more.
 
-
 <a name="oauth"></a>
-## OAuth
+### OAuth
 
 The oauth option defines the credentials for each case cases in the config file.  
 
@@ -116,8 +114,9 @@ The oauth option defines the credentials for each case cases in the config file.
 > 
 > Rather than duplicate these per request tokens in each case they are defined globally and referrened by name in each case (see **[case token](#case-token)**).
 > 
+>
 > <details>
-> <summary>Example</summary>
+> <summary>Tokens Options</summary>
 > 
 > ```json
 > {
@@ -182,6 +181,20 @@ If your config file contains oauth tokens be careful of publishing them with you
     ]
 }
 ```
+
+
+## Running Spark
+
+With your config file setup all that's left to do is run spark.
+
+```
+spark [-c path] [-o path]
+```
+* `-c path`: optional path to config file. Defaults to ./spark.json
+* `-o path`: a directory to save respones in. Can be ommitted if defined in the config file
+
+In other words, with the output path in your config file it's as simple as running `spark` from within the directory containing your `spark.json` config file. 🎉
+
 
 ## Credits
 
