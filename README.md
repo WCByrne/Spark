@@ -112,21 +112,67 @@ While the key and secret in `token` are the default for all requests. It may be 
 
 Possible tokens can be defined here and referenced by key in each case (see **[case token](#case-token)**)
 
-For example:
+<details>
+<summary>Example</summary>
 
 ```json
 {
-	"consumer": { ... }
-	"token": { ... }
-	"tokens" : {
+	"consumer": { },
+	"token": { },
+	"tokens": {
 		"user-1" : {
 			"key" : "<key-for-user-1>"
-			"secret" : "<secret-for-user-1>"
+			"secret": "<secret-for-user-1>"
 		},
-		"user-2" : {
-			"key" : "<key-for-user-2>"
-			"secret" : "<secret-for-user-2>"
+		"user-2": {
+			"key": "<key-for-user-2>"
+			"secret": "<secret-for-user-2>"
 		}
 	}
+}
+```
+</details>
+
+
+
+## Config Example
+
+```
+{
+    "service": "http://api.service.com",
+    "headers": {},
+    "output": "./SparkResponses",
+    "oauth": {
+        "consumer": {
+            "key": "<key>",
+            "secret": "<secret>"
+        },
+        "token": {
+            "key": "<key>",
+            "secret": "<secret>"
+        }
+    },
+    "cases": [
+        {
+            "name": "FetchDrafts",
+            "method": "GET",
+            "path": "/v1/posts",
+            "headers": null,
+            "params": {
+            		"status": "draft"
+            },
+            "body": null
+        },
+        {
+            "name": "CreatePost",
+            "method": "POST",
+            "path": "/v1/posts",
+            "headers": {},
+            "body": {
+            		"title": "About Spark",
+            		"body": "Well, it's kind of awesome."
+            }
+        }
+    ]
 }
 ```
