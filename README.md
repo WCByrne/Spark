@@ -16,8 +16,8 @@ Spark is a general purpose http request runner
 * Whatever you dream up
 
 ## Communication
-* Questions: **[@wcbyrne](https://twitter.com/wcbyrne/)**
-* Bug/request: **[Issues](https://github.com/WCByrne/Spark/issues)**
+* Questions: 🐦 **[@wcbyrne](https://twitter.com/wcbyrne/)**
+* Bug/request: 📝 **[Issues](https://github.com/WCByrne/Spark/issues)**
 
 
 ## Installation
