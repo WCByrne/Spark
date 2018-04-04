@@ -22,7 +22,7 @@ Spark is a general purpose http request runner
 
 ## Installation
 
-For now spark can be installed manually by downloading the executable and moving it to `/usr/local/bin`.
+For now spark can be installed manually by downloading the **[executable](https://github.com/WCByrne/Spark/releases/download/0.1/spark.zip)** and moving it to `/usr/local/bin`.
 
 ## Getting Started
 
