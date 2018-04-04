@@ -15,6 +15,10 @@ Spark is a general purpose http request runner
 * Use respones for documentation examples
 * Whatever you dream up
 
+## Communication
+* Questions: **[@wcbyrne](https://twitter.com/wcbyrne/)**
+* Bug/request: **[Issues](https://github.com/WCByrne/Spark/issues)**
+
 ## Getting Started
 
 Spark uses a config file to define the requests to make. Getting your config started is as easy as:
@@ -171,3 +175,7 @@ The oauth option defines the credentials for each case cases in the config file.
     ]
 }
 ```
+
+## Credits
+
+OAuth signing thanks to **[OhhAuth](https://github.com/mw99/OhhAuth)**
