@@ -11,7 +11,7 @@ import Foundation
 
 struct Config: Codable {
     let service : URL
-    let headers : [String:String]
+    let headers : [String:String]?
     let output : String?
     let oauth: OAuth?
     let properties: [String:String]?

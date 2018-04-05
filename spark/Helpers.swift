@@ -72,17 +72,29 @@ func createConfig(args: [String:Any]) {
         token: OAuth.Credential(key: "token-key", secret: "token-secret"),
         tokens: nil)
     let cases = [
-        Case(name: "test-case-one", method: "GET", path: "/v1/endpoint", headers: nil, params: nil, body: nil, token: nil)
-    ]
-    let headers = [
-        "x-service-header":"header-value"
+        Case(name: "test-case-one",
+             method: "GET",
+             path: "/posts",
+             headers: nil,
+             params: nil,
+             body: nil,
+             token: nil),
+        Case(name: "test-case-one",
+             method: "POST",
+             path: "/posts",
+             headers: nil,
+             params: nil,
+             body: JSON.object([
+                "title": .string("A post")
+                ]),
+             token: nil)
     ]
     
-    let config = Config(service: URL(string: "http://api.myservice.com")!,
-                        headers: headers,
+    let config = Config(service: URL(string: "https://jsonplaceholder.typicode.com")!,
+                        headers: nil,
                         output: "./SparkResponses",
-                        oauth: auth,
-                        properties: [:],
+                        oauth: nil,
+                        properties: nil,
                         cases: cases)
     
     

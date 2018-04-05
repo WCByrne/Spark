@@ -3,12 +3,9 @@
     "headers": {},
     "cases": [
         {
-            "name": "posts",
+            "name": "Posts",
             "method": "GET",
-            "path": "/posts",
-            "headers": null,
-            "params": null,
-            "body": null
+            "path": "/posts"
         }
     ]
 }

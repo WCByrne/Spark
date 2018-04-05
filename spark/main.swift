@@ -92,17 +92,21 @@ do {
         
         session.dataTask(with: request) { (_data, response, error) in
             defer { run() }
+            
+            
+            let method = "[\(reqCase.method)]".padding(toLength: 10, withPad: " ", startingAt: 0)
+            
             guard let data = _data else {
-                log.print("\(_idx) ❌: \(reqCase.path)")
+                log.print("\(_idx) ❌ \(method) \(reqCase.path)")
                 return
             }
             do {
                 let resURL = outputURL.appendingPathComponent(reqCase.name).appendingPathExtension("json")
                 try data.write(to: resURL)
-                log.print("\(_idx) ✅: \(reqCase.path)")
+                log.print("\(_idx) ✅ \(method) \(reqCase.path)")
             }
             catch let err {
-                log.error("\(idx) ❌ [FAILED WRITE]: \(reqCase.path)")
+                log.error("\(idx) ❌ \(method) \(reqCase.path) [FAILED WRITE]")
             }
         }.resume()
     }
