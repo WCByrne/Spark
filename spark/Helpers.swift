@@ -67,19 +67,16 @@ func createConfig(args: [String:Any]) {
     }
     
     try? FileManager.default.removeItem(at: path)
-    let auth = OAuth(
-        consumer: OAuth.Credential(key: "consumer-key", secret: "consumer-secret"),
-        token: OAuth.Credential(key: "token-key", secret: "token-secret"),
-        tokens: nil)
+    
     let cases = [
-        Case(name: "test-case-one",
+        Case(name: "GetPosts",
              method: "GET",
              path: "/posts",
              headers: nil,
              params: nil,
              body: nil,
              token: nil),
-        Case(name: "test-case-one",
+        Case(name: "CreatePost",
              method: "POST",
              path: "/posts",
              headers: nil,
