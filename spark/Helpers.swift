@@ -79,10 +79,11 @@ func createConfig(args: [String:Any]) {
     ]
     
     let config = Config(service: URL(string: "http://api.myservice.com")!,
-                        cases: cases,
                         headers: headers,
                         output: "./SparkResponses",
-                        oauth: auth)
+                        oauth: auth,
+                        properties: [:],
+                        cases: cases)
     
     
     let encoder = JSONEncoder()

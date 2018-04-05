@@ -59,6 +59,12 @@ The config file defines the requests that should be made when running spark. The
 > **cases** `Array`
 > 
 > A list of requests to be made. See **[Cases](#cases)**
+> 
+> **properties** `Dictionary`
+> 
+> Values that can be reused in cases. Keys and values must be strings.
+> 
+> Reference values in any string property of a request using `<key>`.
 
 
 <a name="cases"></a>
